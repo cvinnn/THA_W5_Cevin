@@ -43,6 +43,11 @@
             this.txtStock = new System.Windows.Forms.TextBox();
             this.txtNamaCat = new System.Windows.Forms.TextBox();
             this.cbCategory = new System.Windows.Forms.ComboBox();
+            this.label1 = new System.Windows.Forms.Label();
+            this.label2 = new System.Windows.Forms.Label();
+            this.label3 = new System.Windows.Forms.Label();
+            this.label4 = new System.Windows.Forms.Label();
+            this.label5 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.dgProduct)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgCategory)).BeginInit();
             this.SuspendLayout();
@@ -56,6 +61,7 @@
             this.dgProduct.RowTemplate.Height = 24;
             this.dgProduct.Size = new System.Drawing.Size(620, 292);
             this.dgProduct.TabIndex = 0;
+            this.dgProduct.CellMouseClick += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.dgProduct_CellMouseClick);
             // 
             // dgCategory
             // 
@@ -66,6 +72,7 @@
             this.dgCategory.RowTemplate.Height = 24;
             this.dgCategory.Size = new System.Drawing.Size(322, 292);
             this.dgCategory.TabIndex = 1;
+            this.dgCategory.CellMouseClick += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.dgCategory_CellMouseClick);
             // 
             // btAll
             // 
@@ -105,6 +112,7 @@
             this.btAddCategory.TabIndex = 5;
             this.btAddCategory.Text = "Add Category";
             this.btAddCategory.UseVisualStyleBackColor = true;
+            this.btAddCategory.Click += new System.EventHandler(this.btAddCategory_Click);
             // 
             // btRemoveCategory
             // 
@@ -114,6 +122,7 @@
             this.btRemoveCategory.TabIndex = 6;
             this.btRemoveCategory.Text = "Remove Category";
             this.btRemoveCategory.UseVisualStyleBackColor = true;
+            this.btRemoveCategory.Click += new System.EventHandler(this.btRemoveCategory_Click);
             // 
             // btAddProduct
             // 
@@ -123,6 +132,7 @@
             this.btAddProduct.TabIndex = 7;
             this.btAddProduct.Text = "Add Product";
             this.btAddProduct.UseVisualStyleBackColor = true;
+            this.btAddProduct.Click += new System.EventHandler(this.btAddProduct_Click);
             // 
             // btEditProduct
             // 
@@ -132,6 +142,7 @@
             this.btEditProduct.TabIndex = 8;
             this.btEditProduct.Text = "Edit Product";
             this.btEditProduct.UseVisualStyleBackColor = true;
+            this.btEditProduct.Click += new System.EventHandler(this.btEditProduct_Click);
             // 
             // btRemoveProduct
             // 
@@ -141,6 +152,7 @@
             this.btRemoveProduct.TabIndex = 9;
             this.btRemoveProduct.Text = "Remove Product";
             this.btRemoveProduct.UseVisualStyleBackColor = true;
+            this.btRemoveProduct.Click += new System.EventHandler(this.btRemoveProduct_Click);
             // 
             // txtNamaProd
             // 
@@ -155,6 +167,7 @@
             this.txtHarga.Name = "txtHarga";
             this.txtHarga.Size = new System.Drawing.Size(146, 22);
             this.txtHarga.TabIndex = 11;
+            this.txtHarga.TextChanged += new System.EventHandler(this.txtHarga_TextChanged);
             // 
             // txtStock
             // 
@@ -162,6 +175,7 @@
             this.txtStock.Name = "txtStock";
             this.txtStock.Size = new System.Drawing.Size(100, 22);
             this.txtStock.TabIndex = 12;
+            this.txtStock.TextChanged += new System.EventHandler(this.txtStock_TextChanged);
             // 
             // txtNamaCat
             // 
@@ -178,11 +192,61 @@
             this.cbCategory.Size = new System.Drawing.Size(121, 24);
             this.cbCategory.TabIndex = 14;
             // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(36, 396);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(50, 16);
+            this.label1.TabIndex = 15;
+            this.label1.Text = "Nama :";
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(18, 425);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(68, 16);
+            this.label2.TabIndex = 16;
+            this.label2.Text = "Category :";
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Location = new System.Drawing.Point(36, 455);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(51, 16);
+            this.label3.TabIndex = 17;
+            this.label3.Text = "Harga :";
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Location = new System.Drawing.Point(39, 486);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(47, 16);
+            this.label4.TabIndex = 18;
+            this.label4.Text = "Stock :";
+            // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.Location = new System.Drawing.Point(830, 386);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(50, 16);
+            this.label5.TabIndex = 19;
+            this.label5.Text = "Nama :";
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1120, 531);
+            this.Controls.Add(this.label5);
+            this.Controls.Add(this.label4);
+            this.Controls.Add(this.label3);
+            this.Controls.Add(this.label2);
+            this.Controls.Add(this.label1);
             this.Controls.Add(this.cbCategory);
             this.Controls.Add(this.txtNamaCat);
             this.Controls.Add(this.txtStock);
@@ -225,6 +289,11 @@
         private System.Windows.Forms.TextBox txtStock;
         private System.Windows.Forms.TextBox txtNamaCat;
         private System.Windows.Forms.ComboBox cbCategory;
+        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.Label label5;
     }
 }
 
